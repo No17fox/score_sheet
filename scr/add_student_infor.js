@@ -1,4 +1,5 @@
 let Build = require("./build.js");
+let Student = require("../scr/student.js");
 
 class AddStudentInfor extends Build{
   constructor() {
@@ -27,6 +28,16 @@ class AddStudentInfor extends Build{
       }
     });
     return stuInforArr.slice(0, 2).concat(scoreArr);
+  }
+
+  createStuInforObj(stuInforArr) {
+    let studentInfor = new Student(stuInforArr[0], stuInforArr[1]);
+    for (let i = 2; i < stuInforArr.length; i++) {
+      studentInfor[stuInforArr[i][0]] = Number(stuInforArr[i][1]);
+      studentInfor.sum += studentInfor[stuInforArr[i][0]];
+    }
+    studentInfor.average = studentInfor.sum / (stuInforArr.length - 2);
+    return studentInfor;
   }
 }
 
