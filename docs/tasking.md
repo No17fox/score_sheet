@@ -17,7 +17,8 @@
    ```
    #2 buildStuInforPromptStr
    输入：
-   	selectionId: Number
+   	inputType: String
+   	prompt: String
    输出：
    	stuInforPromptStr: String
    ```
@@ -29,7 +30,7 @@
    输入：
    	stuInforStr: String
    输出：
-   	verifyResult: Boolean
+   	stuInforArr: [String]
    ```
 
 4. 添加学生信息
@@ -37,8 +38,7 @@
    ```
    #4 addStudentInfor
    输入：
-   	stuInforStr: String
-   	verifyResult: Boolean
+   	stuInforArr: [String]
    输出：
    	studentInfor: Object
    	addResult: String
@@ -49,7 +49,8 @@
    ```
    #5 buildStuSeqPromptStr
    输入：
-   	selectionId: Number
+   	inputType: String
+   	prompt: String
    输出：
    	stuSeqPromptStr: String
    ```
@@ -59,9 +60,9 @@
    ```
    #6 verifySutdentSeq
    输入：
-   	studentSeqStr: [String]
+   	studentSeqStr: String
    输出：
-   	verifyResult: Boolean
+   	studentSeqArr: [String]
    ```
 
 7. 创建成绩单
@@ -69,9 +70,8 @@
    ```
    #7 buildScoreSheet
    输入：
-   	studentSeqStr: [String]
+   	studentSeqArr: [String]
    	studentInfor: Object
-   	verifyResult: Boolean
    输出：
    	scoreRepot：Object
    ```
