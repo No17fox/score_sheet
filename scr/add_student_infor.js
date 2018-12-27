@@ -5,8 +5,8 @@ class AddStudentInfor extends Build{
     super("学生信息", "格式：姓名，学号，学科：成绩，...");
   }
 
-  verifyStudentInfor(input) {
-    let stuInforArr = input.split("，");
+  verifyStudentInfor(stuInforStr) {
+    let stuInforArr = stuInforStr.split("，");
     if (stuInforArr.length >= 2 && stuInforArr[0] && Number(stuInforArr[1])) {
        if (stuInforArr.length > 2) {
         stuInforArr = this.verifyScoreInfor(stuInforArr);
