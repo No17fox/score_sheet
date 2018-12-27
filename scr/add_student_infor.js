@@ -1,7 +1,7 @@
 let Build = require("./build.js");
 let Student = require("../scr/student.js");
 
-class AddStudentInfor extends Build{
+class AddStudentInfor extends Build {
   constructor() {
     super("学生信息", "格式：姓名，学号，学科：成绩，...");
   }
