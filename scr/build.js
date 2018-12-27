@@ -2,7 +2,6 @@ class Build {
   constructor(inputType, prompt) {
     this.inputType = inputType;
     this.prompt = prompt;
-    this.verifyResult = false;
   }
 
   printPrompt() {
@@ -10,7 +9,6 @@ class Build {
   }
 
   promptIllegalInput() {
-    this.verifyResult = false;
     return (`请按正确的格式输入${this.inputType}（${this.prompt}），按回车提交：`);
   }
 }

@@ -10,7 +10,6 @@ describe("Build", () => {
   it("should have attributes as inputType, prompt and verifyResult", () => { 
     expect(BUILD.inputType).toEqual("学生信息");
     expect(BUILD.prompt).toEqual("格式：姓名，学号，学科：成绩，...");
-    expect(BUILD.verifyResult).toEqual(false);
   });
 
   it("should have a method to print prompt", () => {    
@@ -20,7 +19,6 @@ describe("Build", () => {
 
   it("should have a method to prompt illegal input data", () => {
     const RESULT = BUILD.promptIllegalInput();
-    expect(BUILD.verifyResult).toEqual(false);
     expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
   });
 });

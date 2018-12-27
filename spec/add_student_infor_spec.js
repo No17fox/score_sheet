@@ -8,7 +8,6 @@ describe("AddStudentInfor", () => {
   it("should have attributes as inputType, prompt and verifyResult", () => { 
     expect(addStudentInfor.inputType).toEqual("学生信息");
     expect(addStudentInfor.prompt).toEqual("格式：姓名，学号，学科：成绩，...");
-    expect(addStudentInfor.verifyResult).toEqual(false);
   });
 
   it("should have a method to print prompt", () => {    
