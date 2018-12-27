@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "node run-tests.js"
+    "test": "node run-tests.js",
+    "test-single": "jasmine-node --verbose "
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   },
   "homepage": "https://school.thoughtworks.cn",
   "devDependencies": {
-    "jasmine": "^2.6.0",
-    "sinon": "^2.3.5"
+    "jasmine": "^2.99.0",
+    "sinon": "^2.4.1"
+  },
+  "dependencies": {
+    "jasmine-node": "^1.16.2"
   }
 }
