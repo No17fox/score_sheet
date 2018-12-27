@@ -7,7 +7,7 @@ const INPUT_TYPE = "学生信息";
 const BUILD = new Build(INPUT_TYPE, PROMPT);
 
 describe("Build", () => {
-  it("should have attributes as inputType, prompt and verifyResult", () => { 
+  it("should have attributes as inputType, prompt", () => { 
     expect(BUILD.inputType).toEqual("学生信息");
     expect(BUILD.prompt).toEqual("格式：姓名，学号，学科：成绩，...");
   });
