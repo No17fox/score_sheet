@@ -23,28 +23,49 @@
    	stuInforPromptStr: String
    ```
 
-3. 验证输入的学生信息的格式
+3. 解析输入的学生信息
 
    ```
-   #3 verifyStudentInfor
+   #3 parseInput
    输入：
    	stuInforStr: String
    输出：
    	stuInforArr: [String]
    ```
 
-4. 添加学生信息
+4. 验证输入的学生信息的格式
 
    ```
-   #4 addStudentInfor
+   #4 verifyStudentInfor
    输入：
    	stuInforArr: [String]
    输出：
+   	verifiedStuInfor: [String]
+   	illegalInputPrompt: String
+   ```
+
+5. 创建学生信息
+
+   ```
+   #5 createStuInforObj
+   输入：
+   	verifiedStuInfor: [String]
+   输出：
    	studentInfor: Object
+   ```
+
+6. 创建学生信息数据库
+
+   ```
+   #6 buildStudentDatabase
+   输入：
+   	studentInfor: Object
+   输出：
+   	studentDatabase: [Object]
    	addResult: String
    ```
 
-5. 提示打印成绩单时的输入格式
+7. 提示打印成绩单时的输入格式
 
    ```
    #5 buildStuSeqPromptStr
@@ -55,7 +76,7 @@
    	stuSeqPromptStr: String
    ```
 
-6. 验证输入的学生序列信息
+8. 验证输入的学生序列信息
 
    ```
    #6 verifySutdentSeq
@@ -65,7 +86,7 @@
    	studentSeqArr: [String]
    ```
 
-7. 创建成绩单
+9. 创建成绩单
 
    ```
    #7 buildScoreSheet
@@ -76,7 +97,7 @@
    	scoreRepot：Object
    ```
 
-8. 打印成绩单
+10. 打印成绩单
 
    ```
    #8 printScoreSheet
@@ -86,13 +107,13 @@
    	scoreSheet: String
    ```
 
-9. 退出系统
+11. 退出系统
 
-   ```
-   #9 exitSystem
-   输入：
-   	selectionId: Number
-   输出：
-   	exitFlag: Boolean
-   	exitInfor: String
-   ```
+    ```
+    #9 exitSystem
+    输入：
+    	selectionId: Number
+    输出：
+    	exitFlag: Boolean
+    	exitInfor: String
+    ```
