@@ -84,17 +84,20 @@ describe("AddStudentInfor", () => {
     const STU_1_INFOR_ARR = addStudentInfor.parseInput(STU_1);
     const STU_1_VERIFIED_INFOR = addStudentInfor.verifyStudentInfor(STU_1_INFOR_ARR);
     const STU_1_OBJ = addStudentInfor.createStuInforObj(STU_1_VERIFIED_INFOR);
-    addStudentInfor.buildStudentDatabase(STU_1_OBJ);
+    const RESULT_1 = addStudentInfor.buildStudentDatabase(STU_1_OBJ);
 
     const STU_2 = "李四，20160102，数学：85，语文：80，英语：70，编程：90";
     const STU_2_INFOR_ARR = addStudentInfor.parseInput(STU_2);
     const STU_2_VERIFIED_INFOR = addStudentInfor.verifyStudentInfor(STU_2_INFOR_ARR);
     const STU_2_OBJ = addStudentInfor.createStuInforObj(STU_2_VERIFIED_INFOR);
-    addStudentInfor.buildStudentDatabase(STU_2_OBJ);
+    const RESULT_2 = addStudentInfor.buildStudentDatabase(STU_2_OBJ);
 
-    const RESULT = addStudentInfor.stuentDatabase;
+    const ALLSTUDENTS = addStudentInfor.stuentDatabase;
 
-    expect(RESULT).toEqual([{
+    expect(RESULT_1).toEqual("学生张三的成绩被添加");
+    expect(RESULT_2).toEqual("学生李四的成绩被添加");
+
+    expect(ALLSTUDENTS).toEqual([{
       name: "张三",
       id: 20160101,
       average: 82.5,

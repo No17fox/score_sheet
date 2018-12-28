@@ -45,6 +45,7 @@ class AddStudentInfor extends Build {
 
   buildStudentDatabase(studentInfor) {
     this.stuentDatabase.push(studentInfor);
+    return (`学生${studentInfor.name}的成绩被添加`);
   }
 }
 
