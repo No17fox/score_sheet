@@ -6,7 +6,7 @@ class BuildScoreSheet extends Build {
   }
 
   verifyStudentSeq(studentSeq) {
-    let studentArr = studentSeq.split(",").map(item => item = Number(item));
+    let studentArr = studentSeq.split(",").map(item => Number(item));
     if (studentArr.reduce((acc, cur) => acc && cur)) {
       return studentArr;
     } else {
