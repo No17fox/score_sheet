@@ -6,28 +6,30 @@ class AddStudentInfor extends Build {
     super("学生信息", "格式：姓名，学号，学科：成绩，...");
   }
 
-  verifyStudentInfor(stuInforStr) {
-    let stuInforArr = stuInforStr.split("，");
-    if (stuInforArr.length >= 2 && stuInforArr[0] && Number(stuInforArr[1])) {
-       if (stuInforArr.length > 2) {
-        stuInforArr = this.verifyScoreInfor(stuInforArr);
-       }
-      return stuInforArr;
+  verifyStudentInfor(stuInforArr) {
+    let verifyResult;
+    let allowedNameAndId = stuInforArr[0] && Number(stuInforArr[1]);
+    if (stuInforArr.length === 2 && allowedNameAndId) {
+      verifyResult = true;
+    } else if (stuInforArr.length > 2 && allowedNameAndId) {
+      let scoreArr = stuInforArr.slice(2).reduce((acc, cur) => acc.concat(cur));
+      let allowedSubject = scoreArr.filter((item, idx) => idx % 2 === 0).reduce((acc, cur) => acc && cur);
+      let allowedScore = scoreArr.filter((item, idx) => idx % 2 === 1).map(item => Number(item)).reduce((acc, cur) => acc && cur);
+      verifyResult = (allowedSubject && allowedScore) ? true : false;
     } else {
-      return (super.promptIllegalInput());
+      verifyResult = false;
     }
+    return verifyResult ? stuInforArr : super.promptIllegalInput();
   }
 
-  verifyScoreInfor(stuInforArr) {
-    let scoreArr = stuInforArr.slice(2).map(item => {
-      let score = item.split("：");
-      if (score.length === 2 && score[0] && Number(score[1])) {
-        return score;
-      } else {
-        return (super.promptIllegalInput());
+  parseInput(stuInforStr) {
+    let stuInforArr = stuInforStr.split("，");
+    if (stuInforArr.length > 2) {
+      for (let i = 2; i < stuInforArr.length; i++) {
+        stuInforArr[i] = stuInforArr[i].split("：");
       }
-    });
-    return stuInforArr.slice(0, 2).concat(scoreArr);
+    }
+    return stuInforArr;
   }
 
   createStuInforObj(stuInforArr) {

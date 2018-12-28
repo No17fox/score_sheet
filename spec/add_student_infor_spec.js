@@ -15,22 +15,53 @@ describe("AddStudentInfor", () => {
     expect(RESULT).toEqual("请输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
   });
 
+  it("should have a method to parse input", () => {
+    const INPUT = "张三，20160101，数学：七十五，语文：95，英语：80，编程：80";
+    const RESULT = addStudentInfor.parseInput(INPUT);
+    expect(RESULT).toEqual(["张三", "20160101", ["数学", "七十五"], ["语文", "95"], ["英语", "80"], ["编程", "80"]]);
+  });
+
+  it("should have a method to parse input", () => {
+    const INPUT = "语文：95，语文：95，数学：七十五，：95，英语80，编程：80";
+    const RESULT = addStudentInfor.parseInput(INPUT);
+    expect(RESULT).toEqual(["语文：95", "语文：95", ["数学", "七十五"], ["", "95"], ["英语80"], ["编程", "80"]]);
+  });
+
   it("should have a method to verify input", () => {
-    const INPUT = "张三，20160101";
+    const INPUT = ["张三", "20160101"];
     const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
     expect(RESULT).toEqual(["张三", "20160101"]);
   });
 
   it("should have a method to verify input", () => {
-    const INPUT = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
+    const INPUT = ["张三", "20160101", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
     const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
     expect(RESULT).toEqual(["张三", "20160101", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]]);
   });
 
+  it("should have a method to verify input", () => {
+    const INPUT = ["张三", "张三", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
+    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+  });
+
+  it("should have a method to verify input", () => {
+    const INPUT = ["张三", "20160101", ["", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
+    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+  });
+
+  it("should have a method to verify input", () => {
+    const INPUT = ["张三", "20160101", ["数学", "七十五"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
+    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+  });
+
   it("should have a method to create student infor object", () => {
     const INPUT = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
-    const INFOR_ARR = addStudentInfor.verifyStudentInfor(INPUT);
-    const RESULT = addStudentInfor.createStuInforObj(INFOR_ARR);
+    const INFOR_ARR = addStudentInfor.parseInput(INPUT);
+    const VERIFY_RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
+    const RESULT = addStudentInfor.createStuInforObj(VERIFY_RESULT);
     expect(RESULT).toEqual({
       name: "张三",
       id: 20160101,
