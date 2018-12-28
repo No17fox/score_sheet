@@ -28,32 +28,37 @@ describe("AddStudentInfor", () => {
   });
 
   it("should have a method to verify input", () => {
-    const INPUT = ["张三", "20160101"];
-    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    const INPUT = "张三，20160101";
+    const INFOR_ARR = addStudentInfor.parseInput(INPUT);
+    const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
     expect(RESULT).toEqual(["张三", "20160101"]);
   });
 
   it("should have a method to verify input", () => {
-    const INPUT = ["张三", "20160101", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
-    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    const INPUT = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
+    const INFOR_ARR = addStudentInfor.parseInput(INPUT);
+    const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
     expect(RESULT).toEqual(["张三", "20160101", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]]);
   });
 
   it("should have a method to verify input", () => {
-    const INPUT = ["张三", "张三", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
-    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    const INPUT = "张三，张三，数学：七十五，语文：95，英语：80，编程：80";
+    const INFOR_ARR = addStudentInfor.parseInput(INPUT);
+    const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
     expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
   });
 
   it("should have a method to verify input", () => {
-    const INPUT = ["张三", "20160101", ["", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
-    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    const INPUT = "张三，20160101，：75，语文：95，英语：80，编程：80";
+    const INFOR_ARR = addStudentInfor.parseInput(INPUT);
+    const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
     expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
   });
 
   it("should have a method to verify input", () => {
-    const INPUT = ["张三", "20160101", ["数学", "七十五"], ["语文", "95"], ["英语", "80"], ["编程", "80"]];
-    const RESULT = addStudentInfor.verifyStudentInfor(INPUT);
+    const INPUT = "张三，20160101，数学：七十五，语文：95，英语：80，编程：80";
+    const INFOR_ARR = addStudentInfor.parseInput(INPUT);
+    const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
     expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
   });
 
