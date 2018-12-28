@@ -79,4 +79,40 @@ describe("AddStudentInfor", () => {
     });
   });
 
+  it("should have a method to build student infor data base", () => {
+    const STU_1 = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
+    const STU_1_INFOR_ARR = addStudentInfor.parseInput(STU_1);
+    const STU_1_VERIFIED_INFOR = addStudentInfor.verifyStudentInfor(STU_1_INFOR_ARR);
+    const STU_1_OBJ = addStudentInfor.createStuInforObj(STU_1_VERIFIED_INFOR);
+    addStudentInfor.buildStudentDatabase(STU_1_OBJ);
+
+    const STU_2 = "李四，20160102，数学：85，语文：80，英语：70，编程：90";
+    const STU_2_INFOR_ARR = addStudentInfor.parseInput(STU_2);
+    const STU_2_VERIFIED_INFOR = addStudentInfor.verifyStudentInfor(STU_2_INFOR_ARR);
+    const STU_2_OBJ = addStudentInfor.createStuInforObj(STU_2_VERIFIED_INFOR);
+    addStudentInfor.buildStudentDatabase(STU_2_OBJ);
+
+    const RESULT = addStudentInfor.stuentDatabase;
+
+    expect(RESULT).toEqual([{
+      name: "张三",
+      id: 20160101,
+      average: 82.5,
+      sum: 330,
+      "数学": 75,
+      "语文": 95,
+      "英语": 80,
+      "编程": 80,
+    }, {
+      name: "李四",
+      id: 20160102,
+      average: 81.25,
+      sum: 325,
+      "数学": 85,
+      "语文": 80,
+      "英语": 70,
+      "编程": 90,
+    }]);
+  });
+
 });

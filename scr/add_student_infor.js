@@ -4,6 +4,7 @@ let Student = require("../scr/student.js");
 class AddStudentInfor extends Build {
   constructor() {
     super("学生信息", "格式：姓名，学号，学科：成绩，...");
+    this.stuentDatabase = [];
   }
 
   verifyStudentInfor(stuInforArr) {
@@ -40,6 +41,10 @@ class AddStudentInfor extends Build {
     }
     studentInfor.average = studentInfor.sum / (stuInforArr.length - 2);
     return studentInfor;
+  }
+
+  buildStudentDatabase(studentInfor) {
+    this.stuentDatabase.push(studentInfor);
   }
 }
 
