@@ -89,10 +89,10 @@
 9. 创建成绩单
 
    ```
-   #7 buildScoreSheet
+   #7 buildScoreReport
    输入：
    	studentSeqArr: [String]
-   	studentInfor: Object
+   	studentDatabase: [Object]
    输出：
    	scoreRepot：Object
    ```
@@ -117,3 +117,4 @@
     	exitFlag: Boolean
     	exitInfor: String
     ```
+
