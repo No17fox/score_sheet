@@ -35,6 +35,30 @@ class BuildScoreSheet extends Build {
       return totalScore[middle];
     }
   }
+
+  printScoreSheet() {
+    let studentAttri = this.scoreReport.students.map(item => Object.keys(item));
+    let subjects = studentAttri.reduce((acc, cur) => {
+      return (acc.length > cur.length) ? acc : cur;
+    }).slice(4);
+
+    let students = this.scoreReport.students.map(member => {
+      let student = [member.name];
+      subjects.map(item => student.push(member[item]));
+      student.push(member.average);
+      student.push(member.sum);
+      return student.join("|");
+    });
+
+    const TITLE = "成绩单\n";
+    const HEAD = `姓名|${subjects.join("|")}|平均分|总分\n`;
+    const DIVIDING_LINE = "========================\n";
+    const STUDENTS = students.join("\n") + "\n";
+    const AVERAGE = `全班总分平均数：${this.scoreReport.average}\n`;
+    const MEDIAN = `全班总分中位数：${this.scoreReport.median}`;
+
+    return TITLE + HEAD + DIVIDING_LINE + STUDENTS + DIVIDING_LINE + AVERAGE + MEDIAN;
+  }
 }
 
 module.exports = BuildScoreSheet;
