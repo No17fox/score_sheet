@@ -20,7 +20,8 @@ class AddStudentInfor extends Build {
     } else {
       verifyResult = false;
     }
-    return verifyResult ? stuInforArr : super.promptIllegalInput();
+    // return verifyResult ? stuInforArr : super.promptIllegalInput();
+    return verifyResult;
   }
 
   parseInput(stuInforStr) {

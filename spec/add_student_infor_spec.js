@@ -31,43 +31,50 @@ describe("AddStudentInfor", () => {
     const INPUT = "张三，20160101";
     const INFOR_ARR = addStudentInfor.parseInput(INPUT);
     const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
-    expect(RESULT).toEqual(["张三", "20160101"]);
+    expect(RESULT).toEqual(true);
   });
 
   it("should have a method to verify input", () => {
     const INPUT = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
     const INFOR_ARR = addStudentInfor.parseInput(INPUT);
     const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
-    expect(RESULT).toEqual(["张三", "20160101", ["数学", "75"], ["语文", "95"], ["英语", "80"], ["编程", "80"]]);
+    expect(RESULT).toEqual(true);
   });
 
   it("should have a method to verify input", () => {
     const INPUT = "张三，张三，数学：七十五，语文：95，英语：80，编程：80";
     const INFOR_ARR = addStudentInfor.parseInput(INPUT);
     const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
-    expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+    expect(RESULT).toEqual(false);
   });
 
   it("should have a method to verify input", () => {
     const INPUT = "张三，20160101，：75，语文：95，英语：80，编程：80";
     const INFOR_ARR = addStudentInfor.parseInput(INPUT);
     const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
-    expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+    expect(RESULT).toEqual(false);
   });
 
   it("should have a method to verify input", () => {
     const INPUT = "张三，20160101，数学：七十五，语文：95，英语：80，编程：80";
     const INFOR_ARR = addStudentInfor.parseInput(INPUT);
     const RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
-    expect(RESULT).toEqual("请按正确的格式输入学生信息（格式：姓名，学号，学科：成绩，...），按回车提交：");
+    expect(RESULT).toEqual(false);
   });
 
   it("should have a method to create student infor object", () => {
     const INPUT = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
     const INFOR_ARR = addStudentInfor.parseInput(INPUT);
     const VERIFY_RESULT = addStudentInfor.verifyStudentInfor(INFOR_ARR);
-    const RESULT = addStudentInfor.createStuInforObj(VERIFY_RESULT);
-    expect(RESULT).toEqual({
+
+    let result;
+    if (VERIFY_RESULT === false) {
+      addStudentInfor.promptIllegalInput();
+    } else {
+      result = addStudentInfor.createStuInforObj(INFOR_ARR);
+    }
+    
+    expect(result).toEqual({
       name: "张三",
       id: 20160101,
       average: 82.5,
@@ -82,20 +89,32 @@ describe("AddStudentInfor", () => {
   it("should have a method to build student infor data base", () => {
     const STU_1 = "张三，20160101，数学：75，语文：95，英语：80，编程：80";
     const STU_1_INFOR_ARR = addStudentInfor.parseInput(STU_1);
-    const STU_1_VERIFIED_INFOR = addStudentInfor.verifyStudentInfor(STU_1_INFOR_ARR);
-    const STU_1_OBJ = addStudentInfor.createStuInforObj(STU_1_VERIFIED_INFOR);
-    const RESULT_1 = addStudentInfor.buildStudentDatabase(STU_1_OBJ);
+    const STU_1_VERIFIED_RESULT = addStudentInfor.verifyStudentInfor(STU_1_INFOR_ARR);
+
+    let result_1;
+    if (STU_1_VERIFIED_RESULT === false) {
+      addStudentInfor.promptIllegalInput();
+    } else {
+      const STU_1_OBJ = addStudentInfor.createStuInforObj(STU_1_INFOR_ARR);
+      result_1 = addStudentInfor.buildStudentDatabase(STU_1_OBJ);
+    }    
 
     const STU_2 = "李四，20160102，数学：85，语文：80，英语：70，编程：90";
     const STU_2_INFOR_ARR = addStudentInfor.parseInput(STU_2);
-    const STU_2_VERIFIED_INFOR = addStudentInfor.verifyStudentInfor(STU_2_INFOR_ARR);
-    const STU_2_OBJ = addStudentInfor.createStuInforObj(STU_2_VERIFIED_INFOR);
-    const RESULT_2 = addStudentInfor.buildStudentDatabase(STU_2_OBJ);
+    const STU_2_VERIFIED_RESULT = addStudentInfor.verifyStudentInfor(STU_2_INFOR_ARR);
+
+    let result_2;
+    if (STU_2_VERIFIED_RESULT === false) {
+      addStudentInfor.promptIllegalInput();
+    } else {
+      const STU_2_OBJ = addStudentInfor.createStuInforObj(STU_2_INFOR_ARR);
+      result_2 = addStudentInfor.buildStudentDatabase(STU_2_OBJ);
+    }  
 
     const ALLSTUDENTS = addStudentInfor.stuentDatabase;
 
-    expect(RESULT_1).toEqual("学生张三的成绩被添加");
-    expect(RESULT_2).toEqual("学生李四的成绩被添加");
+    expect(result_1).toEqual("学生张三的成绩被添加");
+    expect(result_2).toEqual("学生李四的成绩被添加");
 
     expect(ALLSTUDENTS).toEqual([{
       name: "张三",

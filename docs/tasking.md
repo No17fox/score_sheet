@@ -40,8 +40,7 @@
    输入：
    	stuInforArr: [String]
    输出：
-   	verifiedStuInfor: [String]
-   	illegalInputPrompt: String
+   	verifiedResult: Boolean
    ```
 
 5. 创建学生信息
@@ -49,7 +48,7 @@
    ```
    #5 createStuInforObj
    输入：
-   	verifiedStuInfor: [String]
+   	stuInforArr: [String]
    输出：
    	studentInfor: Object
    ```
@@ -117,4 +116,3 @@
     	exitFlag: Boolean
     	exitInfor: String
     ```
-
