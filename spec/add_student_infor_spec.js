@@ -1,6 +1,6 @@
 'use strict';
 
-let AddStudentInfor = require("../scr/add_student_infor.js");
+let AddStudentInfor = require("../src/add_student_infor.js");
 
 let addStudentInfor = new AddStudentInfor();
 

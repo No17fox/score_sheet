@@ -1,6 +1,6 @@
 'use strict';
 
-let Build = require("../scr/build.js");
+let Build = require("../src/build.js");
 
 const PROMPT = "格式：姓名，学号，学科：成绩，...";
 const INPUT_TYPE = "学生信息";

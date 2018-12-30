@@ -1,6 +1,6 @@
 'use strict';
 
-let Student = require("../scr/student.js");
+let Student = require("../src/student.js");
 
 let student = new Student("张三", "20160101");
 

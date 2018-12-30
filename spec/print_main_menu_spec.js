@@ -1,6 +1,6 @@
 'use strict';
 
-let printMainMenu = require("../scr/print_main_menu.js");
+let printMainMenu = require("../src/print_main_menu.js");
 
 describe("main menu", () => {
   it("should print main menu", () => {

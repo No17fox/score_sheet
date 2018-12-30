@@ -1,6 +1,6 @@
 'use strict';
 
-let BuildScoreSheet = require("../scr/build_score_sheet.js");
+let BuildScoreSheet = require("../src/build_score_sheet.js");
 
 let buildScoreSheet = new BuildScoreSheet();
 

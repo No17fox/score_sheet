@@ -1,5 +1,5 @@
 let Build = require("./build.js");
-let Student = require("../scr/student.js");
+let Student = require("./student.js");
 
 class AddStudentInfor extends Build {
   constructor() {
