@@ -41,7 +41,7 @@ describe("BuildScoreSheet", () => {
 
   it("should have a method to print prompt", () => {    
     const RESULT = buildScoreSheet.printPrompt();
-    expect(RESULT).toEqual("请输入要打印的学生的学号(格式: 学号, 学号, ...), 按回车提交: ");
+    expect(RESULT).toEqual("\n请输入要打印的学生的学号(格式: 学号, 学号, ...), 按回车提交: ");
   });
 
   it("should have a method to verify input", () => {
@@ -53,7 +53,7 @@ describe("BuildScoreSheet", () => {
   it("should have a method to verify input", () => {
     const INPUT = "20160101,20160102,张三,20160104";
     const RESULT = buildScoreSheet.verifyStudentSeq(INPUT);
-    expect(RESULT).toEqual("请按正确的格式输入要打印的学生的学号(格式: 学号, 学号, ...), 按回车提交: ");
+    expect(RESULT).toEqual("\n请按正确的格式输入要打印的学生的学号(格式: 学号, 学号, ...), 按回车提交: ");
   });
 
   it("should have a method to build score report", () => { 
@@ -92,14 +92,15 @@ describe("BuildScoreSheet", () => {
     buildScoreSheet.buildScoreReport(STU_SEQ_ARR, STU_DATABASE);
 
     const RESULT = buildScoreSheet.printScoreSheet();
-    const EXPECT = `成绩单
+    const EXPECT = `
+成绩单
 姓名|数学|语文|英语|编程|平均分|总分
 ========================
 张三|75|95|80|80|82.5|330
 李四|85|80|70|90|81.25|325
 ========================
 全班总分平均数: 327.5
-全班总分中位数: 327.5`.trim();
+全班总分中位数: 327.5`;
 
     expect(RESULT).toEqual(EXPECT);
   })

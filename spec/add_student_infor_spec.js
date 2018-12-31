@@ -12,7 +12,7 @@ describe("AddStudentInfor", () => {
 
   it("should have a method to print prompt", () => {    
     const RESULT = addStudentInfor.printPrompt();
-    expect(RESULT).toEqual("请输入学生信息(格式: 姓名, 学号, 学科: 成绩, ...), 按回车提交: ");
+    expect(RESULT).toEqual("\n请输入学生信息(格式: 姓名, 学号, 学科: 成绩, ...), 按回车提交: ");
   });
 
   it("should have a method to parse input", () => {
@@ -113,8 +113,8 @@ describe("AddStudentInfor", () => {
 
     const ALLSTUDENTS = addStudentInfor.stuentDatabase;
 
-    expect(result_1).toEqual("学生张三的成绩被添加");
-    expect(result_2).toEqual("学生李四的成绩被添加");
+    expect(result_1).toEqual("\n学生张三的成绩被添加");
+    expect(result_2).toEqual("\n学生李四的成绩被添加");
 
     expect(ALLSTUDENTS).toEqual([{
       name: "张三",

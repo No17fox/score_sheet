@@ -50,7 +50,7 @@ class BuildScoreSheet extends Build {
       return student.join("|");
     });
 
-    const TITLE = "成绩单\n";
+    const TITLE = "\n成绩单\n";
     const HEAD = `姓名|${subjects.join("|")}|平均分|总分\n`;
     const DIVIDING_LINE = "========================\n";
     const STUDENTS = students.join("\n") + "\n";
