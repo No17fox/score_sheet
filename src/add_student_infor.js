@@ -3,7 +3,7 @@ let Student = require("./student.js");
 
 class AddStudentInfor extends Build {
   constructor() {
-    super("学生信息", "格式：姓名，学号，学科：成绩，...");
+    super("学生信息", "格式: 姓名, 学号, 学科: 成绩, ...");
     this.stuentDatabase = [];
   }
 
@@ -24,10 +24,10 @@ class AddStudentInfor extends Build {
   }
 
   parseInput(stuInforStr) {
-    let stuInforArr = stuInforStr.split("，");
+    let stuInforArr = stuInforStr.split(", ");
     if (stuInforArr.length > 2) {
       for (let i = 2; i < stuInforArr.length; i++) {
-        stuInforArr[i] = stuInforArr[i].split("：");
+        stuInforArr[i] = stuInforArr[i].split(": ");
       }
     }
     return stuInforArr;
