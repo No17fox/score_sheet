@@ -26,10 +26,15 @@ function jumpToSelectedPage(choice) {
         type: 'input', 
         name: 'studentInforString', 
         message: addStudentInfor.printPrompt(), 
-      }]).then(inputInfor => addStudent(inputInfor.studentInforString));  
+      }]).then(input => addStudent(input.studentInforString));
       break;
 
     case "2":
+      inquirer.prompt([{ 
+        type: 'input', 
+        name: 'studentSequence', 
+        message: buildScoreSheet.printPrompt(), 
+      }]).then(input => generateScoreSheet(input.studentSequence));
       break;
 
     default:
@@ -52,6 +57,18 @@ function addStudent(studentInforString) {
     console.log(addResult);
     main();
   }
+}
+
+function generateScoreSheet(studentSequence) {
+  if (addStudentInfor.stuentDatabase.length === 0) {
+    console.log("\n请先添加学生信息");
+    main();
+  } else {
+    let studentSeqArr = buildScoreSheet.verifyStudentSeq(studentSequence);
+    buildScoreSheet.buildScoreReport(studentSeqArr, addStudentInfor.stuentDatabase);
+    console.log(buildScoreSheet.printScoreSheet());
+    main();
+  } 
 }
 
 
