@@ -2,12 +2,12 @@ let Build = require("./build.js");
 
 class BuildScoreSheet extends Build {
   constructor() {
-    super("要打印的学生的学号", "格式: 学号, 学号, ...");
+    super("要打印的学生的学号", "格式：学号，学号，...");
     this.scoreReport = {};
   }
 
   verifyStudentSeq(studentSeq) {
-    let studentArr = studentSeq.split(",").map(item => Number(item));
+    let studentArr = studentSeq.split(/,|，/).map(item => Number(item));
     if (studentArr.reduce((acc, cur) => acc && cur)) {
       return studentArr;
     } else {
@@ -54,8 +54,8 @@ class BuildScoreSheet extends Build {
     const HEAD = `姓名|${subjects.join("|")}|平均分|总分\n`;
     const DIVIDING_LINE = "========================\n";
     const STUDENTS = students.join("\n") + "\n";
-    const AVERAGE = `全班总分平均数: ${this.scoreReport.average}\n`;
-    const MEDIAN = `全班总分中位数: ${this.scoreReport.median}`;
+    const AVERAGE = `全班总分平均数：${this.scoreReport.average}\n`;
+    const MEDIAN = `全班总分中位数：${this.scoreReport.median}`;
 
     return TITLE + HEAD + DIVIDING_LINE + STUDENTS + DIVIDING_LINE + AVERAGE + MEDIAN;
   }

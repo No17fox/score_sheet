@@ -5,11 +5,11 @@ class Build {
   }
 
   printPrompt() {
-    return(`\n请输入${this.inputType}(${this.prompt}), 按回车提交: `);
+    return (`\n请输入${this.inputType}（${this.prompt}），按回车提交：`);
   }
 
   promptIllegalInput() {
-    return (`\n请按正确的格式输入${this.inputType}(${this.prompt}), 按回车提交: `);
+    return (`\n请按正确的格式输入${this.inputType}（${this.prompt}），按回车提交：`);
   }
 }
 
