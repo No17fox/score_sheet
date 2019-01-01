@@ -51,6 +51,12 @@ describe("BuildScoreSheet", () => {
   });
 
   it("should have a method to verify input", () => {
+    const INPUT = "20160101";
+    const RESULT = buildScoreSheet.verifyStudentSeq(INPUT);
+    expect(RESULT).toEqual([20160101]);
+  });
+
+  it("should have a method to verify input", () => {
     const INPUT = "20160101，20160102，张三，20160104";
     const RESULT = buildScoreSheet.verifyStudentSeq(INPUT);
     expect(RESULT).toEqual("\n请按正确的格式输入要打印的学生的学号（格式：学号，学号，...），按回车提交：");
@@ -103,5 +109,5 @@ describe("BuildScoreSheet", () => {
 全班总分中位数：327.5`;
 
     expect(RESULT).toEqual(EXPECT);
-  })
+  });
 });
