@@ -55,7 +55,7 @@ function addStudent(studentInforString) {
       type: 'input', 
       name: 'studentInforString', 
       message: addStudentInfor.promptIllegalInput(), 
-    }]).then(inputInfor => addStudent(inputInfor.studentInforString));
+    }]).then(input => addStudent(input.studentInforString));
   } else {
     let studentInforObj = addStudentInfor.createStuInforObj(parsedInfor);
     let addResult = addStudentInfor.buildStudentDatabase(studentInforObj);
@@ -65,11 +65,17 @@ function addStudent(studentInforString) {
 }
 
 function generateScoreSheet(studentSequence) {
+  let studentSeqArr = buildScoreSheet.verifyStudentSeq(studentSequence);
   if (addStudentInfor.stuentDatabase.length === 0) {
     console.log("\n请先添加学生信息");
     main();
+  } else if (!studentSeqArr) {
+    inquirer.prompt([{ 
+      type: 'input', 
+      name: 'studentSequence', 
+      message: buildScoreSheet.promptIllegalInput(), 
+    }]).then(input => generateScoreSheet(input.studentSequence));
   } else {
-    let studentSeqArr = buildScoreSheet.verifyStudentSeq(studentSequence);
     buildScoreSheet.buildScoreReport(studentSeqArr, addStudentInfor.stuentDatabase);
     console.log(buildScoreSheet.printScoreSheet());
     main();
