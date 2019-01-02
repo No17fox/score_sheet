@@ -37,7 +37,12 @@ function jumpToSelectedPage(choice) {
       }]).then(input => generateScoreSheet(input.studentSequence));
       break;
 
+    case "3":
+      break;
+
     default:
+      console.log("\n请输入正确的数字");
+      main();
       break;
   }
 }
