@@ -11,7 +11,7 @@ class BuildScoreSheet extends Build {
     if (studentArr.reduce((acc, cur) => acc && cur)) {
       return studentArr;
     } else {
-      return super.promptIllegalInput();
+      return false;
     }
   }
 
