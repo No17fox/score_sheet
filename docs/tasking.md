@@ -7,7 +7,7 @@
    ```
    #1 printMainMenu
    输入：
-   	exitFlag: Boolean
+   	instructionNumber: Number
    输出：
    	mainMenu: String
    ```
@@ -17,6 +17,7 @@
    ```
    #2 buildStuInforPromptStr
    输入：
+   	instructionNumber: Number
    	inputType: String
    	prompt: String
    输出：
@@ -61,7 +62,6 @@
    	studentInfor: Object
    输出：
    	studentDatabase: [Object]
-   	addResult: String
    ```
 
 7. 提示打印成绩单时的输入格式
@@ -69,6 +69,7 @@
    ```
    #5 buildStuSeqPromptStr
    输入：
+   	instructionNumber: Number
    	inputType: String
    	prompt: String
    输出：
@@ -98,21 +99,18 @@
 
 10. 打印成绩单
 
-   ```
-   #8 printScoreSheet
-   输入：
-   	scoreRepot：Object
-   输出：
-   	scoreSheet: String
-   ```
+    ```
+    #8 printScoreSheet
+    输入：
+       	scoreRepot：Object
+    输出：
+       	scoreSheet: String
+    ```
 
 11. 退出系统
 
     ```
     #9 exitSystem
     输入：
-    	selectionId: Number
-    输出：
-    	exitFlag: Boolean
-    	exitInfor: String
+    	instructionNumber: Number
     ```
