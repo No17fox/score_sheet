@@ -23,6 +23,8 @@
     "sinon": "^2.4.1"
   },
   "dependencies": {
+    "cli-interact": "^0.1.9",
+    "inquirer": "^6.2.1",
     "jasmine-node": "^1.16.2"
   }
 }
