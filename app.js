@@ -58,8 +58,8 @@ function addStudent(studentInforString) {
     }]).then(input => addStudent(input.studentInforString));
   } else {
     let studentInforObj = addStudentInfor.createStuInforObj(parsedInfor);
-    let addResult = addStudentInfor.buildStudentDatabase(studentInforObj);
-    console.log(addResult);
+    addStudentInfor.buildStudentDatabase(studentInforObj);
+    console.log(`\n学生${studentInforObj.name}的成绩被添加`);
     main();
   }
 }
